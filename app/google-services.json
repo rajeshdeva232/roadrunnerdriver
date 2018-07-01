@@ -1,0 +1,143 @@
+{
+  "project_info": {
+    "project_number": "131595688715",
+    "firebase_url": "https://roadrunner-f5a3b.firebaseio.com",
+    "project_id": "roadrunner-f5a3b",
+    "storage_bucket": "roadrunner-f5a3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131595688715:android:cdf0afaca78c5b97",
+        "android_client_info": {
+          "package_name": "com.giridemo.roadrunner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131595688715-ed8sd49d8n87vn1ttg7u9crhcaue1u5q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.giridemo.roadrunner",
+            "certificate_hash": "9e74ce0379a769f9ee3a88f87b6ab2ee81047af9"
+          }
+        },
+        {
+          "client_id": "131595688715-0447c0ce9gjvlq49vdrlbjlk8fongdcb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFCPpoTqtzadFMv6RZ3gm70stQArhBx4s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131595688715-0447c0ce9gjvlq49vdrlbjlk8fongdcb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131595688715:android:7935825fda3e8a90",
+        "android_client_info": {
+          "package_name": "com.giridemo.roadrunneradmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131595688715-sp4dl2u3bmkcj6nqma8021eleqd0qmu8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.giridemo.roadrunneradmin",
+            "certificate_hash": "9e74ce0379a769f9ee3a88f87b6ab2ee81047af9"
+          }
+        },
+        {
+          "client_id": "131595688715-0447c0ce9gjvlq49vdrlbjlk8fongdcb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFCPpoTqtzadFMv6RZ3gm70stQArhBx4s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131595688715-0447c0ce9gjvlq49vdrlbjlk8fongdcb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131595688715:android:abf83a460be51e4e",
+        "android_client_info": {
+          "package_name": "com.giridemo.roadrunnerdriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131595688715-h9pru97c5ilidbv6l3haelcs5l8r8s8p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.giridemo.roadrunnerdriver",
+            "certificate_hash": "a72cc36a969d0223b031c2c96251a47f92bb093e"
+          }
+        },
+        {
+          "client_id": "131595688715-0447c0ce9gjvlq49vdrlbjlk8fongdcb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFCPpoTqtzadFMv6RZ3gm70stQArhBx4s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131595688715-0447c0ce9gjvlq49vdrlbjlk8fongdcb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
