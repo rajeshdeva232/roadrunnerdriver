@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".dialogfragment.Userdetails">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="15dp">
+
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/MyTextViewStyle"
+                />
+
+            <TextView
+                android:id="@+id/tvMobileno"
+                style="@style/MyTextViewStyle"/>
+            <TextView
+                android:id="@+id/tvDoorno"
+                style="@style/MyTextViewStyle"/>
+            <TextView
+                android:id="@+id/tvLandmark"
+                style="@style/MyTextViewStyle"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ordered By"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_address"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:text="Name : "
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:paddingTop="15dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"/>
+                <TextView
+                    android:id="@+id/tvOrderedname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:paddingTop="15dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_address"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:text="Mobile No:"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:paddingTop="15dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"/>
+                <TextView
+                    android:id="@+id/tvOrderednumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:paddingTop="15dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvClose"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorPrimary"
+        android:text="CLOSE"
+        android:textColor="#fff"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:textSize="20sp"/>
+
+
+</RelativeLayout>

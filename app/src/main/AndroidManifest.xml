@@ -7,11 +7,11 @@
     <!-- <permission android:name="ACCESS_COARE_LOCATION" /> -->
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <!--&lt;!&ndash; To auto-complete the email text field in the login form with the user's emails &ndash;&gt;-->
+    <!--<uses-permission android:name="android.permission.GET_ACCOUNTS" />-->
+    <!--<uses-permission android:name="android.permission.READ_PROFILE" />-->
+    <!--<uses-permission android:name="android.permission.READ_CONTACTS" />-->
 
     <application
         android:allowBackup="true"
@@ -35,7 +35,20 @@
         <activity android:name=".activity.OderActivity" />
         <activity
             android:name=".activity.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login"/>
+        <service android:name=".services.NotificationService"
+            android:enabled="true"/>
+        <receiver
+            android:name=".broadcast_reciver.NotificationReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="RestartServiceWhenStopped"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="ac.in.ActivityRecognition.RestartSensor" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

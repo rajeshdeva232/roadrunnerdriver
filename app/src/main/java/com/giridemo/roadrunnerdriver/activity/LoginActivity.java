@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import com.giridemo.roadrunnerdriver.R;
+import com.giridemo.roadrunnerdriver.Utils.Constants;
 import com.giridemo.roadrunnerdriver.Utils.SharedPrefrenceHelper;
 import com.giridemo.roadrunnerdriver.Utils.Utils;
 import com.google.firebase.database.DataSnapshot;
@@ -50,20 +51,24 @@ public class LoginActivity extends AppCompatActivity  {
         });
     }
 
-    private void checkCredentials(final String email , String password) {
+    private void checkCredentials(final String email , final String password) {
 
-        String encriptPassword = Utils.base64Encrption(password);
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("DriverData").child(email);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
-                    sharedPrefrenceHelper.saveString("pickedby",email);
-                   startActivity(new Intent(LoginActivity.this,OderActivity.class));
+                    if(Utils.base64Encrption(password).trim().equals(String.valueOf(dataSnapshot.child("password").getValue()))) {
+                        sharedPrefrenceHelper.saveString(Constants.DRIVERNAME, email);
+                        sharedPrefrenceHelper.saveBoolean(Constants.LOGINSTATUS,true);
+                        startActivity(new Intent(LoginActivity.this, OderActivity.class));
+                    }else{
+                        Utils.showToast(getApplicationContext(),"Invalid Password");
+                    }
 
                 }else {
-                    Utils.showToast(getApplicationContext(),"No value in datasnapshot");
+                    Utils.showToast(getApplicationContext(),"User Id Not Exits");
                 }
             }
 

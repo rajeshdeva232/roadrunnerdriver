@@ -87,11 +87,12 @@
             android:layout_marginTop="5dp">
             <Button
                 android:id="@+id/btnAccept"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Accept"
                 android:layout_centerHorizontal="true"
                 android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
                 android:textAllCaps="false"
                 android:background="#0ABD04"
                 android:textColor="#fff"/>
@@ -144,6 +145,7 @@
 
         </net.cachapa.expandablelayout.ExpandableLayout>
         <ImageView
+            android:layout_marginTop="15dp"
             android:id="@+id/ivExpand"
             android:layout_width="match_parent"
             android:layout_height="25dp"

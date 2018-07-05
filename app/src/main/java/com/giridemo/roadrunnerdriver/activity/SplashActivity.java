@@ -15,6 +15,7 @@ import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 import com.giridemo.roadrunnerdriver.R;
 import com.giridemo.roadrunnerdriver.Utils.Constants;
+import com.giridemo.roadrunnerdriver.Utils.SharedPrefrenceHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,10 +24,13 @@ import java.util.Map;
 
 public class SplashActivity extends Activity {
 
+    SharedPrefrenceHelper sharedPrefrenceHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        sharedPrefrenceHelper=new SharedPrefrenceHelper(getApplicationContext());
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -45,7 +49,16 @@ public class SplashActivity extends Activity {
 
 
     private void lanchApp() {
-        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+        Intent intent = null;
+        if(sharedPrefrenceHelper.getBoolean(Constants.LOGINSTATUS)) {
+            if (MainActivity.orderId == null) {
+                intent = new Intent(SplashActivity.this, MainActivity.class);
+            } else {
+                intent = new Intent(SplashActivity.this, OderActivity.class);
+            }
+        }else{
+            intent = new Intent(SplashActivity.this, LoginActivity.class);
+        }
         startActivity(intent);
     }
 

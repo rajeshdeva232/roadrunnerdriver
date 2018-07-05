@@ -5,14 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
-
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fMap"
-        tools:context=".activity.MapActivity"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        />
+        android:background="@android:color/transparent">
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/map_layout"
+            android:layout_above="@+id/icExpand"/>
+        <include
+            android:id="@+id/icExpand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/addresssheet"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

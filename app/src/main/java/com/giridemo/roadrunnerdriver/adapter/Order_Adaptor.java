@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.giridemo.roadrunnerdriver.R;
+import com.giridemo.roadrunnerdriver.Utils.Constants;
 import com.giridemo.roadrunnerdriver.Utils.SharedPrefrenceHelper;
 import com.giridemo.roadrunnerdriver.Utils.Utils;
 import com.giridemo.roadrunnerdriver.activity.MainActivity;
@@ -30,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Order_Adaptor extends RecyclerView.Adapter<Order_Adaptor.ViewHolder>{
-   SharedPrefrenceHelper sharedPrefrenceHelper;
+   private SharedPrefrenceHelper sharedPrefrenceHelper;
     private Context context;
     private ArrayList<OrderHistory> orderHistories;
 
@@ -123,15 +124,22 @@ public class Order_Adaptor extends RecyclerView.Adapter<Order_Adaptor.ViewHolder
     }
 
     private void  acceptRequest(OrderHistory orderHistory) {
-        String name = sharedPrefrenceHelper.getString("pickedby");
-        sharedPrefrenceHelper.saveString("OrderId",orderHistory.getKey());
+        String name = sharedPrefrenceHelper.getString(Constants.DRIVERNAME);
+        sharedPrefrenceHelper.saveString(Constants.ORDERID,orderHistory.getKey());
+        MainActivity.orderId=orderHistory.getKey();
         System.out.println("picked by name in adapter "+name);
         Map<String,Object> acceptRequest= new HashMap<>();
         acceptRequest.put("deliveryStatus",2);
+        acceptRequest.put("orderpickedby",name);
+        acceptRequest.put("adminnotified",1);
+        acceptRequest.put("notifiedUser",1);
         acceptRequest.put("processedTime", Utils.getCurrentTimeStamp());
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("PlaceOrder");
         databaseReference.child(orderHistory.getKey()).updateChildren(acceptRequest);
-        context.startActivity(new Intent(context, MainActivity.class));
+        Intent intent=new Intent(context,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+//        context.startActivity(new Intent(context, MainActivity.class));
     }
 
     private void rejectRequest(OrderHistory orderHistory) {

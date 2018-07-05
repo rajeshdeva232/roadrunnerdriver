@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ltParent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivExpand"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_dropup"/>
+    <TextView
+        android:paddingTop="15dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:id="@+id/tvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:hint="Loading.."
+        android:textSize="18sp"
+        android:layout_margin="10dp"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit ="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:background="@drawable/border_address"/>
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/ltExpand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:el_expanded="false"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_address"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:text="@string/rs"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:paddingTop="15dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"/>
+                <TextView
+                    android:id="@+id/tvDeleverycharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:hint="Loading.."
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:paddingTop="15dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_address"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:text="@string/rs"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:paddingTop="15dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"/>
+                <TextView
+                    android:id="@+id/tvTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:textSize="15sp"
+                    android:hint="Loading.."
+                    android:textStyle="bold"
+                    android:paddingTop="15dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"/>
+            </LinearLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/tvName"-->
+                <!--style="@style/MyTextViewStyle"-->
+                <!--/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tvMobileno"-->
+                <!--style="@style/MyTextViewStyle"/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/tvDoorno"-->
+                <!--style="@style/MyTextViewStyle"/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/tvLandmark"-->
+                <!--style="@style/MyTextViewStyle"/>-->
+
+        </LinearLayout>
+        </ScrollView>
+
+    </net.cachapa.expandablelayout.ExpandableLayout>
+
+
+    <TextView
+        android:id="@+id/tvEndTrip"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorPrimary"
+        android:text="End Trip"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="20sp"/>
+        </LinearLayout>
+
+</LinearLayout>

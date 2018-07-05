@@ -4,7 +4,7 @@
 
     <!-- Strings related to login -->
     <string name="prompt_email">UserName</string>
-    <string name="Rs">\U20B9</string>
+    <string name="rs">\u20B9</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign</string>
     <string name="action_sign_in_short">Sign in</string>
@@ -15,4 +15,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

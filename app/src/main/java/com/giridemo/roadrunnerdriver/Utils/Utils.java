@@ -33,8 +33,7 @@ public class Utils {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        String encriptPassword = Base64.encodeToString(bytes,Base64.DEFAULT);
-        return  encriptPassword;
+        return Base64.encodeToString(bytes,Base64.DEFAULT);
     }
 
     public static String getCurrentTimeStamp(){

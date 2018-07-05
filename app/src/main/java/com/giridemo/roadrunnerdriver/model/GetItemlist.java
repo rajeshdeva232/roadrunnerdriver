@@ -13,9 +13,17 @@ public class GetItemlist {
         this.hotalName = hotalName;
     }
 
-    private String item,hotalName;
+    private String item,hotalName,imageUrl;
     private int amount,minimumquantity;
     private int quantity;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public int getMinimumquantity() {
         return minimumquantity;

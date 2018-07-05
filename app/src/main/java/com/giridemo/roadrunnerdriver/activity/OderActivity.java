@@ -1,5 +1,8 @@
 package com.giridemo.roadrunnerdriver.activity;
 
+import android.app.ActivityManager;
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,8 +15,10 @@ import android.widget.TextView;
 
 import com.giridemo.roadrunnerdriver.R;
 import com.giridemo.roadrunnerdriver.adapter.Order_Adaptor;
+import com.giridemo.roadrunnerdriver.broadcast_reciver.NotificationReceiver;
 import com.giridemo.roadrunnerdriver.model.GetItemlist;
 import com.giridemo.roadrunnerdriver.model.OrderHistory;
+import com.giridemo.roadrunnerdriver.services.NotificationService;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,12 +39,34 @@ public class OderActivity extends AppCompatActivity  {
     RecyclerView rvNeworder;
     TextView textView;
 
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        if (!isMyServiceRunning(NotificationReceiver.class)) {
+//            Log.i(TAG, "onCreate: started");
+//            startService(new Intent(this, NotificationService.class));
+//        }else{
+//            Log.i(TAG, "onCreate: service is running");
+//        }
+//    }
+
+//    @Override
+//    protected void onStop() {
+//        stopService(new Intent(this, NotificationService.class));
+//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oder);
         rvNeworder = findViewById(R.id.rvOrder);
         textView = findViewById(R.id.error);
+        if (!isMyServiceRunning(NotificationReceiver.class)) {
+            Log.i(TAG, "onCreate: started");
+            startService(new Intent(this, NotificationService.class));
+        }else{
+            Log.i(TAG, "onCreate: service is running");
+        }
         loadData();
     }
 
@@ -122,5 +149,18 @@ public class OderActivity extends AppCompatActivity  {
 
             }
         });
+    }
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        assert manager != null;
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                Log.i ("isMyServiceRunning?", true+"");
+                return true;
+            }
+        }
+        Log.i ("isMyServiceRunning?", false+"");
+        return false;
     }
 }
