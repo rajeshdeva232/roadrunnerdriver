@@ -1,5 +1,6 @@
 package com.giridemo.roadrunnerdriver.activity;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.giridemo.roadrunnerdriver.R;
 import com.giridemo.roadrunnerdriver.Utils.Constants;
 import com.giridemo.roadrunnerdriver.Utils.SharedPrefrenceHelper;
@@ -45,6 +48,7 @@ public class LoginActivity extends AppCompatActivity  {
 
                 }else {
 
+
                     checkCredentials(email.getText().toString(),password.getText().toString());
                 }
             }
@@ -59,6 +63,7 @@ public class LoginActivity extends AppCompatActivity  {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
+                    System.out.println("encript pass word "+Utils.base64Encrption(password).trim());
                     if(Utils.base64Encrption(password).trim().equals(String.valueOf(dataSnapshot.child("password").getValue()))) {
                         sharedPrefrenceHelper.saveString(Constants.DRIVERNAME, email);
                         sharedPrefrenceHelper.saveBoolean(Constants.LOGINSTATUS,true);
@@ -95,5 +100,25 @@ public class LoginActivity extends AppCompatActivity  {
             return true;
         }
         return false;
+    }
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = false;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 }
