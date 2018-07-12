@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.giridemo.roadrunnerdriver.R;
@@ -38,6 +39,7 @@ public class OderActivity extends AppCompatActivity  {
     ArrayList<OrderHistory> orderHistoryArrayList=new ArrayList<>();
     RecyclerView rvNeworder;
     TextView textView;
+    ImageView profile;
 
 //    @Override
 //    protected void onStart() {
@@ -60,6 +62,7 @@ public class OderActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oder);
         rvNeworder = findViewById(R.id.rvOrder);
+        profile = findViewById(R.id.profile);
         textView = findViewById(R.id.error);
         if (!isMyServiceRunning(NotificationReceiver.class)) {
             Log.i(TAG, "onCreate: started");
@@ -67,6 +70,12 @@ public class OderActivity extends AppCompatActivity  {
         }else{
             Log.i(TAG, "onCreate: service is running");
         }
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(OderActivity.this,ProfileActivity.class));
+            }
+        });
         loadData();
     }
 

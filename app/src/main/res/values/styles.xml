@@ -23,5 +23,15 @@
         <item name="android:windowEnterAnimation">@anim/view_show</item>
     </style>
 
-
+    <style name="TextLabel" parent="Theme.AppCompat">
+        <item name="android:textColorHint">#fff</item>
+        <item name="colorControlNormal">#fff</item>
+        <item name="colorControlActivated">#fff</item>
+        <item name="colorControlHighlight">#fff</item>
+    </style>
+    <style name="TextAppearance.App.TextInputLayout5" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textColorHighlight">#fff</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

@@ -35,6 +35,17 @@ public class Utils {
         }
         return Base64.encodeToString(bytes,Base64.DEFAULT);
     }
+    public static String decode64 (String password)
+    {
+        String text="";
+        byte[] data = Base64.decode(password, Base64.DEFAULT);
+        try {
+             text = new String(data, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return text;
+    }
 
     public static String getCurrentTimeStamp(){
         try {
