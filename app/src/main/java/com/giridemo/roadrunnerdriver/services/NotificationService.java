@@ -70,36 +70,36 @@ public class NotificationService extends Service {
             }
         });
 
-        Query picked=databaseReference.child("PlaceOrder").orderByChild("deliveryStatus").equalTo(2);
-        picked.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    for(DataSnapshot placedOrder:dataSnapshot.getChildren()){
-                        Log.i(TAG, "onDataChange: working==>"+placedOrder.child("deliveryStatus").getValue());
-                        if(Integer.parseInt(String.valueOf(placedOrder.child("deliveryStatus").getValue()))==2 && Integer.parseInt(String.valueOf(placedOrder.child("adminnotified").getValue()))==1){
-                            databaseReference.child("PlaceOrder").child(String.valueOf(placedOrder.child("key").getValue())).child("adminnotified").setValue(0);
-                            String username=String.valueOf(placedOrder.child("username").getValue());
-                            Log.i(TAG, "onDataChange: username==>"+username);
-                            setNotification("Order picked","Order was picked by "+username,String.valueOf(String.valueOf(placedOrder.child("key").getValue())));
-                        }
-//                        if(Integer.parseInt(String.valueOf(placedOrder.child("deliveryStatus").getValue()))==2 && Integer.parseInt(String.valueOf(placedOrder.child("notifiedUser").getValue()))==1){
-//                            databaseReference.child("PlaceOrder").child(String.valueOf(placedOrder.child("key").getValue())).child("notifiedUser").setValue(0);
-//                            setNotification("Order Picked","Your Order is picked by driver",String.valueOf(String.valueOf(placedOrder.child("key").getValue())));
+//        Query picked=databaseReference.child("PlaceOrder").orderByChild("deliveryStatus").equalTo(2);
+//        picked.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if(dataSnapshot.exists()){
+//                    for(DataSnapshot placedOrder:dataSnapshot.getChildren()){
+//                        Log.i(TAG, "onDataChange: working==>"+placedOrder.child("deliveryStatus").getValue());
+//                        if(Integer.parseInt(String.valueOf(placedOrder.child("deliveryStatus").getValue()))==2 && Integer.parseInt(String.valueOf(placedOrder.child("adminnotified").getValue()))==1){
+//                            databaseReference.child("PlaceOrder").child(String.valueOf(placedOrder.child("key").getValue())).child("adminnotified").setValue(0);
+//                            String username=String.valueOf(placedOrder.child("username").getValue());
+//                            Log.i(TAG, "onDataChange: username==>"+username);
+//                            setNotification("Order picked","Order was picked by "+username,String.valueOf(String.valueOf(placedOrder.child("key").getValue())));
 //                        }
-//                        if(Integer.parseInt(String.valueOf(placedOrder.child("deliveryStatus").getValue()))==-1 && Integer.parseInt(String.valueOf(placedOrder.child("notifiedUser").getValue()))==1){
-//                            databaseReference.child("PlaceOrder").child(String.valueOf(placedOrder.child("key").getValue())).child("notifiedUser").setValue(0);
-//                            setNotification("Order Rejected","Your Order hasbeen Rejected by Admin",String.valueOf(String.valueOf(placedOrder.child("key").getValue())));
-//                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+////                        if(Integer.parseInt(String.valueOf(placedOrder.child("deliveryStatus").getValue()))==2 && Integer.parseInt(String.valueOf(placedOrder.child("notifiedUser").getValue()))==1){
+////                            databaseReference.child("PlaceOrder").child(String.valueOf(placedOrder.child("key").getValue())).child("notifiedUser").setValue(0);
+////                            setNotification("Order Picked","Your Order is picked by driver",String.valueOf(String.valueOf(placedOrder.child("key").getValue())));
+////                        }
+////                        if(Integer.parseInt(String.valueOf(placedOrder.child("deliveryStatus").getValue()))==-1 && Integer.parseInt(String.valueOf(placedOrder.child("notifiedUser").getValue()))==1){
+////                            databaseReference.child("PlaceOrder").child(String.valueOf(placedOrder.child("key").getValue())).child("notifiedUser").setValue(0);
+////                            setNotification("Order Rejected","Your Order hasbeen Rejected by Admin",String.valueOf(String.valueOf(placedOrder.child("key").getValue())));
+////                        }
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 
     private void setNotification(String title,String content,String key){

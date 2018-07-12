@@ -78,6 +78,7 @@ public class OderActivity extends AppCompatActivity  {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                orderHistoryArrayList.clear();
                 if (dataSnapshot.exists())
                 {
                     for (DataSnapshot history:dataSnapshot.getChildren())
