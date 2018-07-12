@@ -48,7 +48,6 @@ public class LoginActivity extends AppCompatActivity  {
 
                 }else {
 
-
                     checkCredentials(email.getText().toString(),password.getText().toString());
                 }
             }

@@ -38,7 +38,7 @@ public class OderActivity extends AppCompatActivity  {
     String TAG ="OderActivity";
     ArrayList<OrderHistory> orderHistoryArrayList=new ArrayList<>();
     RecyclerView rvNeworder;
-    TextView textView;
+    TextView textView , history;
     ImageView profile;
 
 //    @Override
@@ -63,6 +63,7 @@ public class OderActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_oder);
         rvNeworder = findViewById(R.id.rvOrder);
         profile = findViewById(R.id.profile);
+        history  = findViewById(R.id.history);
         textView = findViewById(R.id.error);
         if (!isMyServiceRunning(NotificationReceiver.class)) {
             Log.i(TAG, "onCreate: started");
@@ -74,6 +75,12 @@ public class OderActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(OderActivity.this,ProfileActivity.class));
+            }
+        });
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(OderActivity.this,OrderHistoryctivity.class));
             }
         });
         loadData();

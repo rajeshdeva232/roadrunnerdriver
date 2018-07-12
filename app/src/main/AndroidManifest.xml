@@ -54,8 +54,10 @@
         </receiver>
 
         <activity android:name=".activity.ProfileActivity" />
-        <activity android:name=".activity.Editprofile2Activity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.Editprofile2Activity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.OrderHistoryctivity"></activity>
     </application>
 
 </manifest>
