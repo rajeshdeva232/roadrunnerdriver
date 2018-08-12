@@ -40,6 +40,9 @@
         <service
             android:name=".services.NotificationService"
             android:enabled="true" />
+        <service
+            android:name=".services.GPSTracker"
+            android:enabled="true" />
 
         <receiver
             android:name=".broadcast_reciver.NotificationReceiver"
@@ -57,7 +60,7 @@
         <activity
             android:name=".activity.Editprofile2Activity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.OrderHistoryctivity"></activity>
+        <activity android:name=".activity.OrderHistoryctivity"/>
     </application>
 
 </manifest>

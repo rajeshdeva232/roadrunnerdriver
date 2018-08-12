@@ -3,6 +3,7 @@ package com.giridemo.roadrunnerdriver.activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,12 +14,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.giridemo.roadrunnerdriver.R;
+import com.giridemo.roadrunnerdriver.Utils.Utils;
 import com.giridemo.roadrunnerdriver.adapter.Order_Adaptor;
 import com.giridemo.roadrunnerdriver.broadcast_reciver.NotificationReceiver;
 import com.giridemo.roadrunnerdriver.model.GetItemlist;
 import com.giridemo.roadrunnerdriver.model.OrderHistory;
+import com.giridemo.roadrunnerdriver.services.GPSTracker;
 import com.giridemo.roadrunnerdriver.services.NotificationService;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DataSnapshot;
@@ -65,11 +69,15 @@ public class OderActivity extends AppCompatActivity  {
         profile = findViewById(R.id.profile);
         history  = findViewById(R.id.history);
         textView = findViewById(R.id.error);
-        if (!isMyServiceRunning(NotificationReceiver.class)) {
+        if (!Utils.isMyServiceRunning(NotificationReceiver.class,getApplicationContext())) {
             Log.i(TAG, "onCreate: started");
             startService(new Intent(this, NotificationService.class));
         }else{
             Log.i(TAG, "onCreate: service is running");
+        }
+        Utils.isMyServiceRunning(GPSTracker.class, getApplicationContext());
+        {
+            stopService(new Intent(this, GPSTracker.class));
         }
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,13 +98,14 @@ public class OderActivity extends AppCompatActivity  {
 
         Query query;
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
-        query = databaseReference.child("PlaceOrder").orderByChild("deliveryStatus").equalTo(1);
+        query = databaseReference.child("PlaceOrder").orderByChild("deliveryStatus").equalTo(0);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 orderHistoryArrayList.clear();
                 if (dataSnapshot.exists())
                 {
+                    textView.setVisibility(View.GONE);
                     for (DataSnapshot history:dataSnapshot.getChildren())
                     {
                         OrderHistory orderHistory=new OrderHistory();
@@ -168,16 +177,37 @@ public class OderActivity extends AppCompatActivity  {
         });
     }
 
-    private boolean isMyServiceRunning(Class<?> serviceClass) {
-        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        assert manager != null;
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (serviceClass.getName().equals(service.service.getClassName())) {
-                Log.i ("isMyServiceRunning?", true+"");
-                return true;
-            }
+//    private boolean isMyServiceRunning(Class<?> serviceClass) {
+//        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+//        assert manager != null;
+//        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+//            if (serviceClass.getName().equals(service.service.getClassName())) {
+//                Log.i ("isMyServiceRunning?", true+"");
+//                return true;
+//            }
+//        }
+//        Log.i ("isMyServiceRunning?", false+"");
+//        return false;
+//    }
+
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
         }
-        Log.i ("isMyServiceRunning?", false+"");
-        return false;
+
+        this.doubleBackToExitPressedOnce = false;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 }

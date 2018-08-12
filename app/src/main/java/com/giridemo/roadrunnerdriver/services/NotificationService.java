@@ -39,14 +39,14 @@ public class NotificationService extends Service {
     public void onCreate(){
 //        SharedPrefrenceHelper sharedPrefrenceHelper = new SharedPrefrenceHelper(getApplicationContext());
         final DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
-        Query getUserordered=databaseReference.child("PlaceOrder").orderByChild("deliveryStatus").equalTo(1);
+        Query getUserordered=databaseReference.child("PlaceOrder").orderByChild("deliveryStatus").equalTo(0);
         getUserordered.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     for(DataSnapshot placedOrder:dataSnapshot.getChildren()){
                         Log.i(TAG, "onDataChange: working==>"+placedOrder.child("deliveryStatus").getValue());
-                        if(Integer.parseInt(String.valueOf(placedOrder.child("deliveryStatus").getValue()))==1 && Integer.parseInt(String.valueOf(placedOrder.child("drivernotified").getValue()))==1){
+                        if(Integer.parseInt(String.valueOf(placedOrder.child("deliveryStatus").getValue()))==0 && Integer.parseInt(String.valueOf(placedOrder.child("drivernotified").getValue()))==1){
                             databaseReference.child("PlaceOrder").child(String.valueOf(placedOrder.child("key").getValue())).child("drivernotified").setValue(0);
                             String username=String.valueOf(placedOrder.child("username").getValue());
                             Log.i(TAG, "onDataChange: username==>"+username);
@@ -112,7 +112,7 @@ public class NotificationService extends Service {
         PendingIntent contentIntent = PendingIntent.getActivity(this, 1,notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(),key);
         notification.setAutoCancel(true)
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setSmallIcon(R.drawable.ic_cart)
                 .setContentTitle(title)
                 .setContentText(content)
                 .setDefaults(Notification.DEFAULT_LIGHTS| Notification.DEFAULT_SOUND )

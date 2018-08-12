@@ -2,9 +2,13 @@ package com.giridemo.roadrunnerdriver.activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -23,7 +27,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity  {
 
-    EditText email , password;
+    TextInputEditText email , password;
+    TextInputLayout tlPassword,tlUsername;
     Button login;
     SharedPrefrenceHelper sharedPrefrenceHelper;
 
@@ -34,17 +39,56 @@ public class LoginActivity extends AppCompatActivity  {
         sharedPrefrenceHelper =new SharedPrefrenceHelper(getApplicationContext());
         email =findViewById(R.id.email);
         password =findViewById(R.id.password);
+        tlUsername=findViewById(R.id.tlUsername);
+        tlPassword=findViewById(R.id.tlPassword);
         login =findViewById(R.id.login);
+
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                tlUsername.setError(null);
+            }
+        });
+
+        password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                tlPassword.setError(null);
+            }
+        });
 
         login.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkUserName())
                 {
-                    Utils.showToast(getApplicationContext(),"Enter Valid UserName");
+                    tlUsername.setError("Enter Valid UserName");
+                    email.requestFocus();
                 }else if(checkPassword())
                 {
-                    Utils.showToast(getApplicationContext(),"Enter Valid Password");
+                    tlPassword.setError("Enter Valid Password");
+                   password.requestFocus();
 
                 }else {
 
@@ -105,8 +149,10 @@ public class LoginActivity extends AppCompatActivity  {
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            return;
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         }
 
         this.doubleBackToExitPressedOnce = false;

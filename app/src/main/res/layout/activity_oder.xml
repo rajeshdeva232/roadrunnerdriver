@@ -5,32 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.OderActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:id="@+id/ltToolbar"
+        android:background="@color/colorPrimary">
     <TextView
         android:id="@+id/history"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:text="History"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Orders"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"/>
 <ImageView
     android:id="@+id/profile"
-    android:layout_margin="10dp"
     android:layout_alignParentEnd="true"
     android:background="@drawable/profileimage"
     android:layout_width="30dp"
-    android:layout_height="30dp" />
+    android:layout_centerVertical="true"
+    android:layout_height="30dp"
+    android:layout_marginEnd="15dp"/>
+    </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvOrder"
-        android:layout_below="@+id/profile"
+        android:layout_below="@+id/ltToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"/>
 
     <TextView
         android:id="@+id/error"
         android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="No Data Found"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="No Orders Yet"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>

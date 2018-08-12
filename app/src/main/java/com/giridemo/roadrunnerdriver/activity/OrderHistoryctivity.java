@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import com.giridemo.roadrunnerdriver.R;
 import com.giridemo.roadrunnerdriver.adapter.HistoryAdapter;
 import com.giridemo.roadrunnerdriver.model.DriverHistory;

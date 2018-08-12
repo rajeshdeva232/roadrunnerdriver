@@ -15,5 +15,5 @@ public class Constants {
    public static final String COSTOMERDOORNO="COSTOMERDOORNO";
    public static final String ORDEREDBYNMAE="ORDEREDBYNMAE";
    public static final String ORDEREDBYNO="ORDEREDBYNO";
-
+   public static final int REQUEST_CHECK_SETTINGS = 0x1;
 }
